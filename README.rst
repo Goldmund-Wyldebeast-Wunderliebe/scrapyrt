@@ -1,4 +1,14 @@
 ==========================
+GWW - Custom build
+==========================
+
+docker build -t scrapyrt -f Dockerfile .
+docker tag scrapyrt dockgw20e/scrapyrt:latest
+
+docker login --username <YOUR-DOCKER-ID> --password <SUPERSECRET>
+docker push dockgw20e/scrapyrt:latest
+
+==========================
 Scrapyrt (Scrapy realtime)
 ==========================
 

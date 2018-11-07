@@ -1,27 +1,22 @@
 #
 # To build:
-# > sudo docker build -t scrapyrt .
+# > docker build -t scrapyrt -f Dockerfile .
 #
 # to start as daemon with port 9080 of api exposed as 9080 on host
 # and host's directory ${PROJECT_DIR} mounted as /scrapyrt/project
 #
-# > sudo docker run -p 9080:9080 -tid -v ${PROJECT_DIR}:/scrapyrt/project scrapyrt
+# > docker run -p 9080:9080 -tid -v ${PROJECT_DIR}:/scrapyrt/project scrapyrt
 #
-
-FROM ubuntu:14.04
+#
+# docker tag scrapyrt dockgw20e/scrapyrt:latest
+# docker push dockgw20e/scrapyrt:latest
+#
+FROM python:3.6-stretch
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && \
-    apt-get install -y python python-dev  \
-    libffi-dev libxml2-dev libxslt1-dev zlib1g-dev libssl-dev wget
-
 RUN mkdir -p /scrapyrt/src /scrapyrt/project
 RUN mkdir -p /var/log/scrapyrt
-
-RUN wget -O /tmp/get-pip.py "https://bootstrap.pypa.io/get-pip.py" && \
-    python /tmp/get-pip.py "pip==9.0.1" && \
-    rm /tmp/get-pip.py 
 
 ADD . /scrapyrt/src
 RUN pip install /scrapyrt/src
