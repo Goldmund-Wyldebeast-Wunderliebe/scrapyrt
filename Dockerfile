@@ -7,6 +7,10 @@
 #
 # > docker run -p 9080:9080 -tid -v ${PROJECT_DIR}:/scrapyrt/project scrapyrt
 #
+#
+# docker tag scrapyrt dockgw20e/scrapyrt:latest
+# docker push dockgw20e/scrapyrt:latest
+#
 FROM python:3.6-stretch
 
 ENV DEBIAN_FRONTEND noninteractive
