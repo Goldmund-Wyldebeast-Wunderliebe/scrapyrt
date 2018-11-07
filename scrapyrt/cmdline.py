@@ -14,6 +14,7 @@ from twisted.application.service import Application
 from twisted.internet import reactor
 from twisted.web.server import Site
 
+from scrapyrt.conf.spider_settings import get_project_settings
 from .log import setup_logging
 from .conf import settings
 
@@ -86,6 +87,7 @@ def execute():
         for name, value in arguments.set:
             settings.set(name.upper(), value)
     settings.set('PROJECT_SETTINGS', find_scrapy_project(arguments.project))
+    settings.setmodule(settings.PROJECT_SETTINGS)
     settings.freeze()
     setup_logging()
     application = get_application(arguments)
