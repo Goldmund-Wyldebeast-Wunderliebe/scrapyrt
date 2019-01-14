@@ -2,3 +2,6 @@ Scrapy>=1.0.0
 service-identity>=1.0.0
 demjson
 six
+
+selenium==3.141.0
+scrapy-selenium==0.0.6
