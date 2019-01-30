@@ -5,3 +5,4 @@ six
 
 selenium==3.141.0
 scrapy-selenium==0.0.6
+requests==2.21.0
